@@ -23,13 +23,16 @@
                   data: { turbo_frame: "second_frame" },
                   class: "btn btn--primary" %>
     <%# </div> %>
-  <%# <% end %> %> %>
+  <%# <% end %>
 
   <%# <%= turbo_frame_tag "second_frame" do %>
-    <%# <%= render @quotes %> %> %>
-  <%# <% end %> %>
+    <%# <%= render @quotes %>
+  <%# <% end %>
 
-<%= turbo_stream_from "quotes" %>
+<%# <%= turbo_stream_from "quotes"  %>
+<%# code above broadcast to the same signed-stream-name %>
+
+<%= turbo_stream_from current_company, "quotes" %>
 
 <main class="container">
   <div class="header">

@@ -29,5 +29,9 @@ class Quote < ApplicationRecord
   # Broadcasting Turbo Streams asynchronously is the preferred method for performance reasons.
 
   # Those three callbacks(asynchronously) are equivalent to the following single line
-  broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
+  # broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
+
+
+  # code above broadcasts data to all users and i want to broadcast to the same company users
+  broadcasts_to ->(quote) { [quote.company, "quotes"] }, inserts_by: :prepend
 end
