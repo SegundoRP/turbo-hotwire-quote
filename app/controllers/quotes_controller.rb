@@ -6,6 +6,7 @@ class QuotesController < ApplicationController
   end
 
   def show
+    @line_item_dates = @quote.line_item_dates.ordered
   end
 
   def new
@@ -30,6 +31,9 @@ class QuotesController < ApplicationController
 
   def update
     if @quote.update(quote_params)
+      # these are the same
+      # redirect_to @quote
+      # redirect_to quote_path(@quote)
       respond_to do |format|
         format.html { redirect_to quotes_path, notice: "Quote was successfully updated." }
         format.turbo_stream { flash.now[:notice] = "Quote was successfully updated." }
